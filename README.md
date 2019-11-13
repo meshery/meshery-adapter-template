@@ -14,10 +14,10 @@ For an adapter with name `adapter`, port `12121` and Go version `1.13.4`, the co
 make setup-adapter ADAPTER=adapter PORT=12121 GO_VERSION=1.13.4
 ```
 
-__Please Note__: Do not include `meshery-` in the adapter name.
+__Please Note__: Do not include "meshery-" in the adapter name.
 
-# meshery-<adapter>
-Meshery adapter for <adapter>
+# meshery-\<adapter>
+Meshery adapter for \<adapter>
 
 ## [Meshery](https://layer5.io/meshery)
 
