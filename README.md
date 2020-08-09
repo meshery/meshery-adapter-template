@@ -1,12 +1,12 @@
 <p style="text-align:center;" align="center"><a href="https://layer5.io/meshery"><img align="center" style="margin-bottom:20px;" src="https://raw.githubusercontent.com/layer5io/layer5/master/assets/images/meshery/meshery-logo-tag-light-text-side.png"  width="70%" /></a><br /><br /></p>
 
-# Meshery Adapter for Kuma
+# Meshery Adapter for <adaptor-name>
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/layer5/meshery-kuma.svg)](https://hub.docker.com/r/layer5/meshery-kuma)
-[![Go Report Card](https://goreportcard.com/badge/github.com/layer5io/meshery-kuma)](https://goreportcard.com/report/github.com/layer5io/meshery-kuma)
-[![Build Status](https://github.com/layer5io/meshery-kuma/workflows/Meshery-Kuma/badge.svg)](https://github.com/layer5io/meshery-kuma/actions)
-[![GitHub](https://img.shields.io/github/license/layer5io/meshery-kuma.svg)](https://github.com/layer5io/meshery-kuma/blob/master/LICENSE)
-[![GitHub issues by-label](https://img.shields.io/github/issues/layer5io/meshery-kuma/help%20wanted.svg)](https://github.com/layer5io/meshery-kuma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![Docker Pulls](https://img.shields.io/docker/pulls/layer5/meshery-<adaptor-name>.svg)](https://hub.docker.com/r/layer5/meshery-<adaptor-name>)
+[![Go Report Card](https://goreportcard.com/badge/github.com/layer5io/meshery-<adaptor-name>)](https://goreportcard.com/report/github.com/layer5io/meshery-<adaptor-name>)
+[![Build Status](https://github.com/layer5io/meshery-<adaptor-name>/workflows/Meshery-<adaptor-name>/badge.svg)](https://github.com/layer5io/meshery-<adaptor-name>/actions)
+[![GitHub](https://img.shields.io/github/license/layer5io/meshery-<adaptor-name>.svg)](https://github.com/layer5io/meshery-<adaptor-name>/blob/master/LICENSE)
+[![GitHub issues by-label](https://img.shields.io/github/issues/layer5io/meshery-<adaptor-name>/help%20wanted.svg)](https://github.com/layer5io/meshery-<adaptor-name>/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 [![Website](https://img.shields.io/website/https/layer5.io/meshery.svg)](https://layer5.io/meshery)
 [![Twitter Follow](https://img.shields.io/twitter/follow/layer5.svg?label=Follow&style=social)](https://twitter.com/intent/follow?screen_name=layer5)
 [![Slack](http://slack.layer5.io/badge.svg)](http://slack.layer5.io)
