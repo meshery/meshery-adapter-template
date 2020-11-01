@@ -1,27 +1,12 @@
-protoc-setup:
-	cd meshes
-	wget https://raw.githubusercontent.com/layer5io/meshery/master/meshes/meshops.proto
-
-proto:	
-	protoc -I meshes/ meshes/meshops.proto --go_out=plugins=grpc:./meshes/
-
 docker:
-	docker build -t layer5/meshery-<adapter> .
+	docker build -t layer5/meshery-<adaptor-name> .
 
 docker-run:
-	(docker rm -f meshery-<adapter>) || true
-	docker run --name meshery-<adapter> -d \
-	-p <port>:<port> \
+	(docker rm -f meshery-<adaptor-name>) || true
+	docker run --name meshery-<adaptor-name> -d \
+	-p 10007:10007 \
 	-e DEBUG=true \
-	layer5/meshery-<adapter>
+	layer5/meshery-<adaptor-name>
 
 run:
 	DEBUG=true go run main.go
-
-# setup-adapter sets up a new adapter with the given name & port
-setup-adapter:
-	mv "<adapter>" ${ADAPTER}
-	find . -type f -exec sed -i '' -e 's/<adapter>/${ADAPTER}/g' {} +
-	find . -type f -exec sed -i '' -e 's/<port>/${PORT}/g' {} +
-	find . -type f -exec sed -i '' -e 's/<go_version>/${GO_VERSION}/g' {} +
-	
