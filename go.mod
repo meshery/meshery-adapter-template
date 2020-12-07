@@ -3,7 +3,7 @@ module github.com/layer5io/meshery-kuma
 go 1.13
 
 require (
-	github.com/golang/protobuf v1.4.2
+	github.com/golang/protobuf v1.4.3
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.0
 	github.com/kumarabd/gokit v0.2.0
 	github.com/spf13/afero v1.2.2 // indirect
