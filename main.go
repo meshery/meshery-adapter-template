@@ -6,10 +6,10 @@ import (
 	"time"
 
 	"github.com/kumarabd/gokit/logger"
-	"github.com/layer5io/meshery-kuma/adaptor"
-	"github.com/layer5io/meshery-kuma/api/grpc"
-	"github.com/layer5io/meshery-kuma/internal/config"
-	"github.com/layer5io/meshery-kuma/internal/tracing"
+	"github.com/layer5io/meshery-adapter-template/adaptor"
+	"github.com/layer5io/meshery-adapter-template/api/grpc"
+	"github.com/layer5io/meshery-adapter-template/internal/config"
+	"github.com/layer5io/meshery-adapter-template/internal/tracing"
 )
 
 var (
@@ -18,7 +18,6 @@ var (
 
 // main is the entrypoint of the adaptor
 func main() {
-
 	// Initialize application specific configs and dependencies
 	// App and request config
 	cfg, err := config.New(configProvider)

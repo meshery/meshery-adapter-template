@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"fmt"
+
 	"net"
 	"time"
 
@@ -12,9 +13,9 @@ import (
 	"go.opentelemetry.io/otel/instrumentation/grpctrace"
 	"google.golang.org/grpc"
 
-	"github.com/layer5io/meshery-kuma/adaptor"
-	"github.com/layer5io/meshery-kuma/internal/tracing"
-	"github.com/layer5io/meshery-kuma/proto"
+	"github.com/layer5io/meshery-adapter-template/adaptor"
+	"github.com/layer5io/meshery-adapter-template/internal/tracing"
+	"github.com/layer5io/meshery-adapter-template/proto"
 )
 
 // Service object holds all the information about the server parameters.
@@ -22,7 +23,7 @@ type Service struct {
 	Name      string    `json:"name"`
 	Port      string    `json:"port"`
 	Version   string    `json:"version"`
-	StartedAt time.Time `json:"startedat,string"`
+	StartedAt time.Time `json:"startedat"`
 	TraceURL  string    `json:"traceurl"`
 	Handler   adaptor.Handler
 }
@@ -35,7 +36,6 @@ func panicHandler(r interface{}) error {
 
 // Start starts grpc server
 func Start(s *Service, tr tracing.Handler) error {
-
 	address := fmt.Sprintf(":%s", s.Port)
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
@@ -65,5 +65,4 @@ func Start(s *Service, tr tracing.Handler) error {
 		return ErrGrpcServer(err)
 	}
 	return nil
-
 }
