@@ -18,7 +18,10 @@ func (h *handler) ApplyOperation() error {
 // ListOperations lists the operations available
 func (h *handler) ListOperations() (Operations, error) {
 	// Needs implementation
-	operations := make(Operations, 0)
-	h.config.Operations(&operations)
+	operations := make(Operations)
+	err := h.config.Operations(&operations)
+	if err != nil {
+		return nil, err
+	}
 	return operations, nil
 }

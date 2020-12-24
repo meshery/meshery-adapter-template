@@ -2,7 +2,7 @@ package adaptor
 
 import (
 	"github.com/kumarabd/gokit/logger"
-	"github.com/layer5io/meshery-kuma/internal/config"
+	"github.com/layer5io/meshery-adapter-template/internal/config"
 )
 
 // Handler provides the methods supported by the adaptor
