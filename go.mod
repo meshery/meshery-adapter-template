@@ -9,7 +9,7 @@ require (
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.7.1
-	go.opentelemetry.io/otel v0.14.0
+	go.opentelemetry.io/otel v0.17.0
 	go.opentelemetry.io/otel/exporters/trace/jaeger v0.10.0
 	go.opentelemetry.io/otel/sdk v0.14.0
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
