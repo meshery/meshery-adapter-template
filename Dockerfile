@@ -1,16 +1,29 @@
-FROM golang:1.14-alpine3.11 as build-img
+FROM golang:1.15 as builder
+# Replace <adapter-name> to what you want to create
+# Replace <service-mesh> to the service-mesh application name
+ARG ENVIRONMENT="development"
 ARG CONFIG_PROVIDER="viper"
-RUN apk update && apk add --no-cache git libc-dev gcc pkgconf && mkdir /home/adaptor
-COPY ${PWD} /go/src/github.com/layer5io/meshery-<adaptor-name>/
-WORKDIR /go/src/github.com/layer5io/meshery-<adaptor-name>/
-RUN go mod vendor && go build -ldflags="-w -s -X main.configProvider=$CONFIG_PROVIDER" -a -o /home/adaptor/<adaptor-name>
+WORKDIR /build
+# Copy the Go Modules manifests
+COPY go.mod go.mod
+COPY go.sum go.sum
+# cache deps before building and copying source so that we don't need to re-download as much
+# and so that source changes don't invalidate our downloaded layer
+RUN go mod download
+# Copy the go source
+COPY main.go main.go
+COPY internal/ internal/
+COPY <service-mesh>/ <service-mesh>/
+# Build
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -ldflags="-w -s -X main.environment=$ENVIRONMENT -X main.provider=$CONFIG_PROVIDER" -a -o <adapter-name> main.go
 
-FROM alpine
-RUN apk --update add ca-certificates
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 && \
-	mkdir ${HOME}/.<adaptor-name>/ && \
-	mkdir /home/adaptor/scripts/
-COPY --from=bd /home/adaptor /home/
-COPY --from=bd /go/src/github.com/layer5io/meshery-<adaptor-name>/scripts/** /home/adaptor/scripts/
-WORKDIR /home/adaptor
-CMD ./<adaptor-name>
+# Use distroless as minimal base image to package the manager binary
+# Refer to https://github.com/GoogleContainerTools/distroless for more details
+FROM gcr.io/distroless/base:nonroot-amd64
+ENV DISTRO="debian"
+ENV GOARCH="amd64"
+WORKDIR /templates
+COPY templates/* .
+WORKDIR /
+COPY --from=builder /build/<adapter-name> .
+ENTRYPOINT ["/<adapter-name>"]
